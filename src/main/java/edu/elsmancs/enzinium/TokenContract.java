@@ -89,4 +89,13 @@ public class TokenContract {
 
 		}
 	}
+
+	public void owners() {
+		for (PublicKey key : balances.keySet()) {
+			if (owner.getPK() != key) {
+				System.out.println("Owner: " + key.hashCode() + " " + balances.get(key) + " " + symbol);
+			}
+		}
+
+	}
 }

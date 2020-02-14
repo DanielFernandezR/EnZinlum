@@ -184,5 +184,18 @@ public class App {
 		 * @return muestra en consola la PublicKey de los compradores y el numero de
 		 *         tokens que han adquirido
 		 */
+
+		System.out.println("\n" + "Lista de compradores" + "\n" + "====================");
+		ricknillos.owners();
+
+		/**
+		 * Calcula el numero de asistentes al concierto (excluyendo a Rick), es decir,
+		 * el numero de entradas vendidas.
+		 * 
+		 * totalTokensSold()
+		 * 
+		 * @return numero de tokens (entradas) vendidos
+		 */
+
 	}
 }

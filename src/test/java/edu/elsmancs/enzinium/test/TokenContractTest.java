@@ -71,4 +71,15 @@ public class TokenContractTest {
 		assertEquals(80, prueba.balanceOf(pepe.getPK()), delta);
 		assertEquals(10, prueba.balanceOf(dani.getPK()), delta);
 	}
+
+	@Test
+	public void ownersTest() {
+		Address pepe = new Address();
+		pepe.generateKeyPair();
+		Address manolo = new Address();
+		manolo.generateKeyPair();
+		prueba.transfer(dani.getPK(), pepe.getPK(), 80d);
+		prueba.transfer(dani.getPK(), manolo.getPK(), 5d);
+		prueba.owners();
+	}
 }
