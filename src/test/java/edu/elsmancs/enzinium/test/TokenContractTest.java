@@ -50,6 +50,7 @@ public class TokenContractTest {
 		double delta = 0.001;
 		prueba.transfer(pepe.getPK(), 5d);
 		assertEquals(5, prueba.balanceOf(pepe.getPK()), delta);
+		assertEquals(85, prueba.balanceOf(dani.getPK()), delta);
 	}
 
 	@Test
@@ -61,4 +62,13 @@ public class TokenContractTest {
 		assertEquals(0, prueba.balanceOf(pepe.getPK()), delta);
 	}
 
+	@Test
+	public void transferTestCon3Argumentos() {
+		Address pepe = new Address();
+		pepe.generateKeyPair();
+		double delta = 0.001;
+		prueba.transfer(dani.getPK(), pepe.getPK(), 80d);
+		assertEquals(80, prueba.balanceOf(pepe.getPK()), delta);
+		assertEquals(10, prueba.balanceOf(dani.getPK()), delta);
+	}
 }

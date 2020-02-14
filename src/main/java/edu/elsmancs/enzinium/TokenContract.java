@@ -79,4 +79,14 @@ public class TokenContract {
 			throw new Exception();
 		}
 	}
+
+	public void transfer(PublicKey sender, PublicKey recipient, double units) {
+		try {
+			require(balanceOf(sender) >= units);
+			balances.put(sender, balanceOf(sender) - units);
+			balances.put(recipient, balanceOf(recipient) + units);
+		} catch (Exception e) {
+
+		}
+	}
 }
