@@ -197,5 +197,6 @@ public class App {
 		 * @return numero de tokens (entradas) vendidos
 		 */
 
+		System.out.println("\n" + "Total de asistentes: " + ricknillos.totalTokensSold() + "\n");
 	}
 }

@@ -86,7 +86,6 @@ public class TokenContract {
 			balances.put(sender, balanceOf(sender) - units);
 			balances.put(recipient, balanceOf(recipient) + units);
 		} catch (Exception e) {
-
 		}
 	}
 
@@ -96,6 +95,15 @@ public class TokenContract {
 				System.out.println("Owner: " + key.hashCode() + " " + balances.get(key) + " " + symbol);
 			}
 		}
+	}
 
+	public double totalTokensSold() {
+		double numTokensVendidos = 0d;
+		for (PublicKey key : balances.keySet()) {
+			if (owner.getPK() != key) {
+				numTokensVendidos += balances.get(key);
+			}
+		}
+		return numTokensVendidos;
 	}
 }
