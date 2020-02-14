@@ -48,4 +48,8 @@ public class Address {
 		this.setPK(pair.getPublic());
 		this.setSK(pair.getPrivate());
 	}
+
+	public void transferEZI(double EZI) {
+		this.balance = balance + EZI;
+	}
 }
