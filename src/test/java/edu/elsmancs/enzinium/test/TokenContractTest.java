@@ -42,4 +42,23 @@ public class TokenContractTest {
 		double delta = 0.001;
 		assertEquals(0, prueba.balanceOf(pepe.getPK()), delta);
 	}
+
+	@Test
+	public void transferTest() {
+		Address pepe = new Address();
+		pepe.generateKeyPair();
+		double delta = 0.001;
+		prueba.transfer(pepe.getPK(), 5d);
+		assertEquals(5, prueba.balanceOf(pepe.getPK()), delta);
+	}
+
+	@Test
+	public void transferTestFallaPorRequire() {
+		Address pepe = new Address();
+		pepe.generateKeyPair();
+		double delta = 0.001;
+		prueba.transfer(pepe.getPK(), 200d);
+		assertEquals(0, prueba.balanceOf(pepe.getPK()), delta);
+	}
+
 }

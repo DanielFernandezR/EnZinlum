@@ -63,4 +63,20 @@ public class TokenContract {
 	public double balanceOf(PublicKey pk) {
 		return balances.getOrDefault(pk, 0d);
 	}
+
+	public void transfer(PublicKey recipient, double units) {
+		try {
+			require(balanceOf(owner.getPK()) >= units);
+			balances.put(owner.getPK(), balanceOf(owner.getPK()) - units);
+			balances.put(recipient, balanceOf(recipient) + units);
+		} catch (Exception e) {
+
+		}
+	}
+
+	void require(Boolean holds) throws Exception {
+		if (!holds) {
+			throw new Exception();
+		}
+	}
 }
