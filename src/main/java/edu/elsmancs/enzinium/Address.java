@@ -1,49 +1,51 @@
 package edu.elsmancs.enzinium;
 
 import java.security.KeyPair;
+import java.security.PrivateKey;
+import java.security.PublicKey;
 
 public class Address {
 
-	private int PK = 0;
-	private int SK = 0;
+	private PublicKey PK = null;
+	private PrivateKey SK = null;
 	private Double balance = 0.d;
 	private final String symbol = "EZI";
 
 	public Address() {
 	}
 
-	private int getPK() {
+	public PublicKey getPK() {
 		return this.PK;
 	}
 
-	private void setPK(int PK) {
+	public void setPK(PublicKey PK) {
 		this.PK = PK;
 	}
 
-	private int getSK() {
+	public PrivateKey getSK() {
 		return this.SK;
 	}
 
-	private void setSK(int SK) {
+	public void setSK(PrivateKey SK) {
 		this.SK = SK;
 	}
 
-	private Double getBalance() {
+	public Double getBalance() {
 		return this.balance;
 	}
 
-	private String getSymbol() {
+	public String getSymbol() {
 		return this.symbol;
 	}
 
 	@Override
 	public String toString() {
-		return ("\n" + "PK = " + getPK() + "\n" + "Balance = " + getBalance() + " " + getSymbol());
+		return ("\n" + "PK = " + getPK().hashCode() + "\n" + "Balance = " + getBalance() + " " + getSymbol());
 	}
 
 	public void generateKeyPair() {
 		KeyPair pair = GenSig.generateKeyPair();
-		this.setPK(pair.getPublic().hashCode());
-		this.setSK(pair.getPrivate().hashCode());
+		this.setPK(pair.getPublic());
+		this.setSK(pair.getPrivate());
 	}
 }
