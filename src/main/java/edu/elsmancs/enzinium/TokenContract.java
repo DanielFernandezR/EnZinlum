@@ -40,8 +40,10 @@ public class TokenContract {
 		this.totalSupply = totalSuply;
 	}
 
-	public void addOwner(PublicKey PK, Double units) {
-		balances.put(PK, units);
+	public void addOwner(PublicKey PK, double units) {
+		if (!balances.containsKey(PK)) {
+			balances.put(PK, units);
+		}
 	}
 
 	public Map<PublicKey, Double> getBalances() {
@@ -58,4 +60,7 @@ public class TokenContract {
 		return getBalances().size();
 	}
 
+	public double balanceOf(PublicKey pk) {
+		return balances.getOrDefault(pk, 0d);
+	}
 }

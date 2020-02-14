@@ -29,4 +29,17 @@ public class TokenContractTest {
 	public void toStringTest() {
 		System.out.println(prueba.toString());
 	}
+
+	@Test
+	public void balanceOfTest() {
+		double delta = 0.001;
+		assertEquals(90, prueba.balanceOf(dani.getPK()), delta);
+	}
+
+	@Test
+	public void balanceOfTestWithNoOwner() {
+		Address pepe = new Address();
+		double delta = 0.001;
+		assertEquals(0, prueba.balanceOf(pepe.getPK()), delta);
+	}
 }
