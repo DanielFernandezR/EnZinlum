@@ -11,6 +11,7 @@ public class TokenContract {
 	private double totalSupply;
 	private final Address owner;
 	private Map<PublicKey, Double> balances = new HashMap<PublicKey, Double>();
+	private double tokenPrice = 0d;
 
 	public TokenContract(Address owner) {
 		this.owner = owner;
@@ -48,6 +49,10 @@ public class TokenContract {
 
 	public Map<PublicKey, Double> getBalances() {
 		return balances;
+	}
+
+	public double getTokenPrice() {
+		return tokenPrice;
 	}
 
 	@Override
@@ -105,5 +110,16 @@ public class TokenContract {
 			}
 		}
 		return numTokensVendidos;
+	}
+
+	public void payable(PublicKey recipient, Double EnzinIums) {
+		try {
+			require(EnzinIums >= this.getTokenPrice());
+			Double units = Math.floor(EnzinIums / tokenPrice);
+			transfer(recipient, units);
+			this.owner.transferEZI(EnzinIums);
+		} catch (Exception e) {
+			// fail silently
+		}
 	}
 }
