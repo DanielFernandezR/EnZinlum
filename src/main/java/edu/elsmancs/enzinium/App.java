@@ -1,5 +1,8 @@
 package edu.elsmancs.enzinium;
 
+/**
+ * Código suministrado por el tutor.
+ */
 public class App {
 	public static void main(String[] args) {
 		/**
